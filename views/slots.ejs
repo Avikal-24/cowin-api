@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;1,300&display=swap"
+        rel="stylesheet">
+
+    <style>
+        #filters {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            padding: 0.25rem 0rem 0rem 2rem;
+        }
+
+        #filters p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 2rem;
+            padding: 0rem 1rem;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #heading {
+            display: inline;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        #heading-2 {
+            display: inline;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        #slot_table {
+            border: 1px solid black;
+            margin-left: 9%;
+            margin-right: 9%;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        tr {
+            text-align: start;
+            vertical-align: top;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="heading">
+        <!-- will be rendered by JS -->
+    </div>
+
+    <div id="heading-2">
+        <!-- will be rendered by JS -->
+    </div>
+
+    <p id="brief" class="lead my-4 text-center" style="background-color:#e9ecef; padding:2rem 2rem ; margin: 2rem 8rem">
+
+    </p>
+
+    <div id="setdate" style="background-color:#c2c9ce; padding:2rem 2rem ; margin: 2rem 8rem">
+
+        <p class="lead my-4 text-center">
+            To get the slot details for some other date, use this :-
+        </p>
+        <br>
+
+        <div class="wrapper">
+            <label for="Date of Birth">
+                Enter the Date:
+                <input id="myDate" type="date" name="date">
+            </label>
+
+            <button style="margin-left: 1rem ; " type="button" class="btn btn-success" id="newdate">Go</button>
+        </div>
+
+    </div>
+
+    <div style="display: inline; justify-content: center; text-align: center; font-family: 'Merriweather', serif;">
+        <h3><u>Filters</u></h3>
+    </div>
+
+    <div id="filters">
+
+        <!-- <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Vaccine-Type
+            </button>
+            <ul class="dropdown-menu">
+                <li> <a class="dropdown-item" href="#">COVISHIELD</a> </li>
+                <li> <a class="dropdown-item" href="#">COVAXIN</a> </li>
+                <li> <a class="dropdown-item" href="#">SPUTNIK</a> </li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Fee-Type
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Paid</a></li>
+                <li><a class="dropdown-item" href="#">Free</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Age Limit
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">18+</a></li>
+                <li><a class="dropdown-item" href="#">45+</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dose Number
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">First Dose</a></li>
+                <li><a class="dropdown-item" href="#">Second Dose</a></li>
+            </ul>
+        </div> -->
+
+        <p> Select your vaccine type :
+            <select id="select1">
+                <option value="COVISHIELD">COVISHIELD</option>
+                <option value="COVAXIN">COVAXIN</option>
+                <option value="SPUTNIK V">SPUTNIK V</option>
+            </select>
+        </p>
+        <p> Select the fee type :
+            <select id="select2">
+                <option value="Paid">Paid</option>
+                <option value="Free">Free</option>
+            </select>
+        </p>
+        <p> Select the age limit :
+            <select id="select3">
+                <option value="18+">18+</option>
+                <option value="45+">45+</option>
+            </select>
+        </p>
+        <p> Select your dose number :
+            <select id="select4">
+                <option value="First">First</option>
+                <option value="Second">Second</option>
+            </select>
+        </p>
+
+    </div>
+
+    <div class="wrapper">
+        <button onclick="getOption()" type="button" class="btn btn-primary" style=" margin-bottom: 4rem ;">Apply
+            Filters</button>
+    </div>
+
+
+    <div id="slot_table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Center ID</th>
+                    <th scope="col">Center Name</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Capacity of dose-1</th>
+                    <th scope="col">Capacity of dose-2</th>
+                    <th scope="col">Age Limit</th>
+                    <th scope="col">Fee Type</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Vaccine Available</th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td class="align-top">1083884</td>
+                    <td class="align-top">AIIMS</td>
+                    <td class="align-top">110020</td>
+                    <td class="align-top">20</td>
+                    <td class="align-top">20</td>
+                    <td class="align-top">45</td>
+                    <td class="align-top">Paid</td>
+                    <td class="align-top">850</td>
+                    <td class="align-top">COVAXIN</td>
+                </tr> -->
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <footer class="bd-footer py-5 mt-5 bg-light">
+        <div class="container text-muted">
+            <h3 class="text-uppercase font-weight-bold text-center"><u>Cowin Dashboard</u></h3>
+            <p class=" text-center ">This website is developed by Avikal Goel, Student of Delhi Technological
+                University, 2023 batch, to assist people to find COVID vaccination centers in their districts. It
+                displays all relevant details to get themselves vaccinated against COVID-19. This dashboard uses the
+                COWIN public APIs to get real time information about all vaccination centers in INDIA.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <script>
+
+        let data = new Object();
+        let today = new Date();
+        today.setFullYear( <%= year %> , <%= month %> , <%= date %> ) ;
+        // console.log(today);
+        // console.log(typeof(today)) ;
+
+        document.getElementById("newdate").onclick = function () {
+            let x = document.getElementById("myDate").valueAsDate;
+            today = x;
+            console.log(typeof(today))  ;
+            console.log(today)  ;
+            location.href = `../../${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
+        };
+
+
+        let html = `These are the possible slots which you can book in your selected state and district. <br>
+        The slots shown here are for the Date: 
+        ${today.getDate()} / ${today.getMonth() + 1} / ${today.getFullYear()} `;
+
+
+        // console.log(html) ;
+        document.getElementById("brief").innerHTML = html;
+
+        async function fetchAPI() {
+            let url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=<%=district_id%>&date=${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+            try {
+                let response = await fetch(url);
+                return await response.json();
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+        async function display() {
+            data = await fetchAPI();
+            // console.log(data);
+
+            document.getElementById("heading").innerHTML = `
+         <h1><u>${data.sessions[0].state_name}</u></h1>
+        ` ;
+
+            document.getElementById("heading-2").innerHTML = `
+        <h2><u>${data.sessions[0].district_name}</u></h2>
+        ` ;
+
+            data = data.sessions;
+            data.sort(function (a, b) { return a.pincode - b.pincode });
+            // console.log(data) ;
+
+            let num_items = data.length;
+            // console.log(num_items) ;
+
+            let html = document.getElementById("content").innerHTML;
+            // console.log(html) ;
+
+            for (let i = 0; i < num_items; i++) {
+                html += `
+                    <tr>
+
+                        <th scope="row">${i + 1}</th>
+                    <td class="align-top">${data[i].center_id}</td>
+                    <td class="align-top">${data[i].name}</td>
+                    <td class="align-top">${data[i].pincode}</td>
+                    <td class="align-top">${data[i].available_capacity_dose1}</td>
+                    <td class="align-top">${data[i].available_capacity_dose2}</td>
+                    <td class="align-top">${data[i].min_age_limit}</td>
+                    `
+                if (data[i].fee_type == "Free") {
+                    html += `<td class="align-top">${data[i].fee_type}</td>
+                        <td class="align-top">-</td>
+                        `
+                }
+                else {
+                    html += `<td class="align-top">${data[i].fee_type}</td>
+                        <td class="align-top">${data[i].fee}</td>
+                        `
+                }
+
+                html += `
+                    <td class="align-top">${data[i].vaccine}</td>
+                    </tr>
+                `
+            }
+            document.getElementById("content").innerHTML = html;
+        }
+
+        display();
+
+        function getOption() {
+
+            let selectElement = document.querySelector('#select1');
+            let vaccine = selectElement.value;
+
+            selectElement = document.querySelector('#select2');
+            let fee = selectElement.value;
+
+            selectElement = document.querySelector('#select3');
+            let age = selectElement.value;
+
+            selectElement = document.querySelector('#select4');
+            let dose = selectElement.value;
+
+            console.log(data);
+            let tempdata = [];
+
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].vaccine == vaccine) {
+                    if ((fee == "Paid" && data[i].fee != "0") || (fee == "Free" && data[i].fee == "0")) {
+                        if ((dose == "First" && data[i].available_capacity_dose1 > 0) || (dose == "Second" && data[i].available_capacity_dose2 > 0)) {
+                            tempdata.push(data[i]);
+                        }
+                    }
+                }
+            }
+
+            let html = new String();
+
+            for (let i = 0; i < tempdata.length; i++) {
+                html += `
+                    <tr>
+
+                        <th scope="row">${i + 1}</th>
+                    <td class="align-top">${tempdata[i].center_id}</td>
+                    <td class="align-top">${tempdata[i].name}</td>
+                    <td class="align-top">${tempdata[i].pincode}</td>
+                    <td class="align-top">${tempdata[i].available_capacity_dose1}</td>
+                    <td class="align-top">${tempdata[i].available_capacity_dose2}</td>
+                    <td class="align-top">${tempdata[i].min_age_limit}</td>
+                    `
+                if (tempdata[i].fee_type == "Free") {
+                    html += `<td class="align-top">${tempdata[i].fee_type}</td>
+                        <td class="align-top">-</td>
+                        `
+                }
+                else {
+                    html += `<td class="align-top">${tempdata[i].fee_type}</td>
+                        <td class="align-top">${tempdata[i].fee}</td>
+                        `
+                }
+
+                html += `
+                    <td class="align-top">${tempdata[i].vaccine}</td>
+                    </tr>
+                `
+            }
+            document.getElementById("content").innerHTML = html;
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
